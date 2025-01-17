@@ -11,8 +11,8 @@ public class Matrix {
         }
         this.rowNum = m.length;
         this.colNum = m[0].length;
-        this.sqMatrix = false;
         if (this.rowNum == this.colNum) this.sqMatrix = true;
+        else this.sqMatrix = false;
         this.m = m;
     }
 
@@ -23,8 +23,15 @@ public class Matrix {
         this.m = new double[][]{{0,0},{0,0}};
     }
 
-    public void changeMatrix(double[][] m){
-
+    public void setMatrix(double[][] m){
+        if (m.length == 0 || !validMatrix(m)){
+            throw new IllegalArgumentException("invalid matrix input");
+        }
+        this.colNum = m[0].length;
+        this.rowNum = m.length;
+        if (this.colNum == this.rowNum) this.sqMatrix = true;
+        else this.sqMatrix = false;
+        this.m = m;
     }
 
     public int getColNum(){
@@ -39,7 +46,20 @@ public class Matrix {
         return this.m;
     }
 
-    protected boolean validMatrix(double[][] matrix){
+    @Override
+    public String toString(){
+        String result = "[\n";
+        for(int i = 0; i<rowNum;i++){
+            for (int j = 0; j<colNum;j++){
+                result += m[i][j] + " ";
+            }
+            result += "\n";
+        }
+        result += "]";
+        return result;
+    }
+
+    private boolean validMatrix(double[][] matrix){
         //checks every row has same length
         int r = matrix[0].length;
         for (double[] rows : matrix){
