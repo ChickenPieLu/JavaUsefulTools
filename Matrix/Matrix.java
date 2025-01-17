@@ -1,3 +1,5 @@
+package Matrix;
+
 public class Matrix {
     protected int rowNum;
     protected int colNum;

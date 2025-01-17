@@ -1,3 +1,5 @@
+package Matrix;
+
 public class MatrixOps {
 
     public static double[][] add(Matrix a, Matrix b) throws IllegalArgumentException{
