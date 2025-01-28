@@ -1,4 +1,4 @@
-package Matrix;
+package src.main.java.Matrix;
 
 public class Matrix {
     protected int rowNum;
